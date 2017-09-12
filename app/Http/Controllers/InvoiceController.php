@@ -201,16 +201,16 @@ Class InvoiceController extends Controller{
                 $documents = \App\Document ::all()->pluck('name','id')->all();
                 $payment_methods = \App\PaymentMethod ::all()->pluck('name','id')->all();
 
-if (Auth::check())
- {
- $id=Auth::user()->id;
- }   
-$profiles=\App\Profile::where('user_id',$id)->get();
-foreach ($profiles as $profile)
-{
-$company_id=$profile['company_id'];
-$companys=\App\Company::where('id',$company_id)->get();
-}
+        if (Auth::check())
+         {
+         $id=Auth::user()->id;
+         }
+        $profiles=\App\Profile::where('user_id',$id)->get();
+        foreach ($profiles as $profile)
+        {
+        $company_id=$profile['company_id'];
+        $companys=\App\Company::where('id',$company_id)->get();
+        }
 		return view('invoice.create',compact('invoice_due_date_lists','customers','currencies','default_currency','taxations','test','item_type_lists','documents','shipment_address','payment_methods','companys'));
 	}
 
@@ -665,6 +665,10 @@ $companys=\App\Company::where('id',$company_id)->get();
 		    }
 		}
 
+        //Generando archivo de texto
+        // todo  cargar plantilla
+        // todo sustituir campos
+        // todo guardar texto en base de datos
 
 
 		if($request->input('form_action') == 'send'){
