@@ -9,6 +9,10 @@ use Auth;
 use Entrust;
 use App\Taxregimen;
 use App\CustomerCompany;
+use App\Zipcode;
+use App\State;
+use App\City;
+use App\Location;
 
 use App\Notifications\UserStatusChange;
 use App\Jobs\UploadCustomer;
@@ -60,11 +64,17 @@ class UserController extends Controller
         $customer_groups = \App\CustomerGroup::all()->pluck('name','id')->all();
         $assets = ['datatable'];
         $menu = $type;
-        $neighbourhood=array();
+        $zipcode= Zipcode::pluck('zipcode', 'id');
+        $state= State::pluck('state', 'code');
+        $city= City::pluck('city', 'code');
+        $location= Location::pluck('location', 'code');
+
+        $neighbourhood=\App\Neighbourhood::all()->pluck('name','id')->all();
+
         $taxregimen= Taxregimen::pluck('tax_regimen_name', 'tr_id');
 	$business_type=array('1'=>'Individual','2'=>'Company');
 
-        return view('user.index',compact('table_data','assets','menu','roles','type','designations','customer_groups','companies','business_type','taxregimen','neighbourhood'));
+        return view('user.index',compact('table_data','assets','menu','roles','type','designations','customer_groups','companies','business_type','taxregimen','neighbourhood','zipcode','state','city','location'));
     }
 
  public function create($type = 'staff'){
@@ -105,12 +115,16 @@ class UserController extends Controller
         $designations = \App\Designation::whereIsHidden(0)->whereIn('id',getDesignation(\Auth::user()))->get()->pluck('designation_with_department','id')->all();
         $customer_groups = \App\CustomerGroup::all()->pluck('name','id')->all();
         $assets = ['datatable'];
-        $menu = $type;
-        $neighbourhood=array();
+        $menu = $type;    
         $taxregimen= Taxregimen::pluck('tax_regimen_name', 'tr_id');
 	$business_type=array('1'=>'Individual','2'=>'Company');
+        $neighbourhood=\App\Neighbourhood::all()->pluck('name','id')->all();
+        $zipcode= Zipcode::pluck('zipcode', 'id');
+        $state= State::pluck('state', 'code');
+        $city= City::pluck('city', 'code');
+        $location= Location::pluck('location', 'code');
 
-        return view('user.create',compact('table_data','assets','menu','roles','type','designations','customer_groups','companies','business_type','taxregimen','neighbourhood'));
+        return view('user.create',compact('table_data','assets','menu','roles','type','designations','customer_groups','companies','business_type','taxregimen','neighbourhood','zipcode','state','city','location'));
 
 
 
@@ -156,11 +170,15 @@ public function store_view($type = 'staff'){
         $customer_groups = \App\CustomerGroup::all()->pluck('name','id')->all();
         $assets = ['datatable'];
         $menu = 'customer_add';
-        $neighbourhood=array();
+        $zipcode= Zipcode::pluck('zipcode', 'id');
+        $neighbourhood=\App\Neighbourhood::all()->pluck('name','id')->all();
         $taxregimen= Taxregimen::pluck('tax_regimen_name', 'tr_id');
 	$business_type=array('1'=>'Individual','2'=>'Company');
+        $state= State::pluck('state', 'code');
+        $city= City::pluck('city', 'code');
+        $location= Location::pluck('location', 'code');
 
-        return view('user.store',compact('table_data','assets','menu','roles','type','designations','customer_groups','companies','business_type','taxregimen','neighbourhood'));
+        return view('user.store',compact('table_data','assets','menu','roles','type','designations','customer_groups','companies','business_type','taxregimen','neighbourhood','zipcode','state','city','location'));
 
 
 

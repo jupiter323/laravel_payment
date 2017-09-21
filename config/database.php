@@ -35,7 +35,7 @@ return [
 
         'primary' => [
             'driver' => 'mysql',
-            'host' => env('DB_HOST'),
+            'host' => env('DB_HOST') . env('DB_HOST_PORT'),
             'port' => '3306',
             'database' => env('DB_NAME'),
             'username' => env('DB_USERNAME'),

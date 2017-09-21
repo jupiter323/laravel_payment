@@ -119,36 +119,66 @@
                         <div class="form-group">
                             {!! Form::label('address',trans('messages.address'),[])!!}
  <div class="form-group">
- {!! Form::select('country_id', config('country'),(isset($company) ? $company->country_id : ''),['class'=>'form-control show-tick','title'=>trans('messages.country')])!!}
+ {!! Form::select('country_id', config('country'),(isset($company) ? $company->country_id : ''),['class'=>'form-control show-tick','id'=>'country','title'=>trans('messages.country')])!!}
 </div>
 <div class="form-group">
 <div class="row">
-                                <div class="col-xs-5">
+ <div class="col-xs-4">
+                             <!--   {!! Form::input('text','zipcode',(isset($company) ? $company->zipcode : ''),['class'=>'form-control','id'=>'zip','placeholder'=>trans('messages.zipcode')])!!}-->
+
+
+             {!! Form::select('zipcode',$zipcode,(isset($company) ? $company->zipcode: ''),['class'=>'form-control show-tick','title'=>trans('messages.zipcode')])!!}
+
+
+                                </div>
+                                <div class="col-xs-4">
                                 {!! Form::input('text','ext_num',(isset($company) ? $company->ext_num: ''),['class'=>'form-control','placeholder'=>trans('messages.ext_num')])!!}
                                 </div>
                                 <div class="col-xs-4">
                                 {!! Form::input('text','int_num',(isset($company) ? $company->int_num: ''),['class'=>'form-control','placeholder'=>trans('messages.int_num')])!!}
                                 </div>
-                                <div class="col-xs-3">
-                                {!! Form::input('text','zipcode',(isset($company) ? $company->zipcode : ''),['class'=>'form-control','id'=>'zip','placeholder'=>trans('messages.zipcode')])!!}
-                                </div>
+                               
                             </div>
 </div>
 <div class="form-group">
-{!! Form::input('text','state',(isset($company) ? $company->state : ''),['class'=>'form-control','id'=>'state','placeholder'=>trans('messages.state')])!!}
+<!--{!! Form::input('text','state',(isset($company) ? $company->state : ''),['class'=>'form-control','id'=>'state','placeholder'=>trans('messages.state')])!!}-->
+
+
+ {!! Form::select('state ',$state ,(isset($company) ? $company->state : ''),['class'=>'form-control show-tick','title'=>trans('messages.state')])!!}
 </div>
 
 <div class="form-group">
-{!! Form::input('text','city',(isset($company) ? $company->city : ''),['class'=>'form-control','id'=>'city','placeholder'=>trans('messages.city')])!!}
+<!--{!! Form::input('text','city',(isset($company) ? $company->city : ''),['class'=>'form-control','id'=>'city','placeholder'=>trans('messages.city')])!!}-->
+
+ {!! Form::select('city',$city,(isset($company) ? $company->city: ''),['class'=>'form-control show-tick','title'=>trans('messages.city')])!!}
 </div>
 
 <div class="form-group">
-{!! Form::input('text','address_line_2',(isset($company) ? $company->address_line_2 : ''),['class'=>'form-control','placeholder'=>trans('messages.location')])!!}
+<!--{!! Form::input('text','address_line_2',(isset($company) ? $company->address_line_2 : ''),['class'=>'form-control','placeholder'=>trans('messages.location')])!!}-->
+
+
+ {!! Form::select('address_line_2 ',$location,(isset($company) ? $company->address_line_2 : ''),['class'=>'form-control show-tick','title'=>trans('messages.location')])!!}
+
 </div>	
-<div class="form-group">
-					{!! Form::select('neighboorhood',  $neighbourhood,(isset($company) ? $company->neighboorhood: ''),['class'=>'form-control show-tick','title'=>trans('messages.neighboorhood')])!!}
-</div>
+<!--<div class="form-group">
+{!! Form::select('neighboorhood',  $neighbourhood,(isset($company) ? $company->neighboorhood: ''),['class'=>'form-control show-tick','title'=>trans('messages.neighboorhood')])!!}
+</div>-->
 
+<div class="row" id="mexico" style="display:none;">
+<div class="form-group">
+<div class="col-sm-12" >					
+<div class="btn-group col-sm-12" role="group" aria-label="Button group with nested dropdown" style="padding-left:0px;padding-right:0px;">
+<div class="btn-group col-sm-10" style="padding-left:0px;padding-right:0px;">
+{!! Form::select('neighboorhood',$neighbourhood,isset($company) ? $company->neighboorhood: '',['class'=>'form-control show-tick','id'=>'neighboorhood','title'=>trans('messages.neighboorhood')])!!}</div>
+<a class="btn btn-success btn-md col-sm-2" id="add-invoice-tax" data-toggle="modal" data-target="#myModal" data-href="/neighbourhood/create"><i class="fa fa-plus" aria-hidden="true"></i>
+</a></div></div></div></div>
+
+<div class="form-group" id="other">
+{!! Form::input('text','neighboorhood',(isset($company) ? $company->neighboorhood: ''),['class'=>'form-control','placeholder'=>trans('messages.neighboorhood')])!!}
+</div>	
+
+
+<div class="form-group"></div>
 
                             {!! Form::input('text','address_line_1',(isset($company) ? $company->address_line_1 : ''),['class'=>'form-control','placeholder'=>trans('messages.street')])!!}
                             <br />
@@ -236,4 +266,25 @@ $(document).ready(function(){
     });
 });
 
+</script>
+
+
+<script>
+ $('#country').on('change', function() {
+var a=$("#country option:selected").text();
+if(a=="Mexico")
+{
+console.log("mexico");
+ $("#mexico").show();
+$("#other").hide();
+}
+else
+{
+console.log("other");
+ $("#mexico").hide();
+$("#other").show();
+
+
+}
+});
 </script>

@@ -9,25 +9,24 @@
 
 			<td class="item-price"><input type="number" class="form-control invoice-input all-item-price" placeholder="{{ trans('messages.item').' '.trans('messages.price') }}" name="item_price[{{$unique_id}}]" id="item_price_{{$unique_id}}" step=""></td>
    
-<td class="item-subtotal1"></td>
 
 
 
 
 
 
-		<td class="item-subtotal1"></td>
+		<td class="item-subtotal1"><input type="text" class="form-control invoice-input all-item-subtotal1" placeholder="{{ trans('messages.item').' '.trans('messages.subtotal') }}" name="subtotal1[{{$unique_id}}]" id="item_subtotal1_{{$unique_id}}" ></td>
 
 
 			<td class="item-discount"><input type="number" class="form-control invoice-input all-item-discount" placeholder="{{ trans('messages.item').' '.trans('messages.discount') }}" name="item_discount[{{$unique_id}}]" id="item_discount_{{$unique_id}}" step="{{decimalValue(config('config.item_discount_decimal_place'))}}"><input type="checkbox" name="item_discount_type[{{$unique_id}}]" id="item_discount_type_{{$unique_id}}" class="all-item-discount-type icheck" data-unique-id="{{$unique_id}}" > <label id="item_discount_type_label_{{$unique_id}}" class="item_discount_type_label">(%)</label></td>
 
-<td class="item-subtotal2"></td>
+<td class="item-subtotal2"><input type="text" class="form-control invoice-input all-item-subtotal2" placeholder="{{ trans('messages.item').' '.trans('messages.subtotal') }}" name="subtotal2[{{$unique_id}}]" id="item_subtotal2_{{$unique_id}}"></td>
 
 
 			<td class="item-tax"><input type="number" class="form-control invoice-input all-item-tax" placeholder="{{trans('messages.item').' '.trans('messages.tax')}}" name="item_tax[{{$unique_id}}]" id="item_tax_{{$unique_id}}" step="{{decimalValue(config('config.item_tax_decimal_place'))}}"></td>
 
 
-<td class="item-subtotal3"></td>
+<td class="item-subtotal3"><input type="text" class="form-control invoice-input all-item-subtotal3" placeholder="{{ trans('messages.item').' '.trans('messages.subtotal') }}" name="subtotal3[{{$unique_id}}]" id="item_subtotal3_{{$unique_id}}" ></td>
 
 			<td id="item_amount_{{$unique_id}}" class="all-item-amount" style="vertical-align:middle;"></td>
 

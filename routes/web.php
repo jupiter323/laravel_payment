@@ -289,9 +289,16 @@ Route::group(['middleware' => ['auth','web','account','lock_screen']], function 
 	Route::model('company','\App\Company');
 	Route::post('/company/lists','CompanyController@lists');
         Route::get('/company/add', 'CompanyController@store_view');
-
-	
 	Route::resource('/company', 'CompanyController'); 
+
+
+
+
+        Route::model('neighbourhood','\App\Neighbourhood');
+	Route::post('/neighbourhood/lists','NeighbourhoodController@lists');
+        Route::get('/neighbourhood/add', 'NeighbourhoodController@store_view');
+	Route::resource('/neighbourhood', 'NeighbourhoodController'); 
+
 
 
         Route::model('branch','\App\Branch');

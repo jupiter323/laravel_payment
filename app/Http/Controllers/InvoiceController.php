@@ -201,16 +201,16 @@ Class InvoiceController extends Controller{
                 $documents = \App\Document ::all()->pluck('name','id')->all();
                 $payment_methods = \App\PaymentMethod ::all()->pluck('name','id')->all();
 
-        if (Auth::check())
-         {
-         $id=Auth::user()->id;
-         }
-        $profiles=\App\Profile::where('user_id',$id)->get();
-        foreach ($profiles as $profile)
-        {
-        $company_id=$profile['company_id'];
-        $companys=\App\Company::where('id',$company_id)->get();
-        }
+if (Auth::check())
+ {
+ $id=Auth::user()->id;
+ }   
+$profiles=\App\Profile::where('user_id',$id)->get();
+foreach ($profiles as $profile)
+{
+$company_id=$profile['company_id'];
+$companys=\App\Company::where('id',$company_id)->get();
+}
 		return view('invoice.create',compact('invoice_due_date_lists','customers','currencies','default_currency','taxations','test','item_type_lists','documents','shipment_address','payment_methods','companys'));
 	}
 
@@ -582,6 +582,9 @@ Class InvoiceController extends Controller{
 		$data['subtotal_discount_amount'] = $subtotal_discount_amount;
 		$data['subtotal_tax_amount'] = $subtotal_tax_amount;
 		$data['subtotal_shipping_and_handling_amount'] = $subtotal_shipping_and_handling_amount;
+                 unset($data['subtotal1']);
+unset($data['subtotal2']);
+unset($data['subtotal3']);
 		$invoice->fill($data);
 		$invoice->save();
 
@@ -611,7 +614,6 @@ Class InvoiceController extends Controller{
 			$invoice_item->unit_price = $prices[$key];
 			$invoice_item->item_discount = ($request->has('line_item_discount')) ? $discounts[$key] : 0;
 			$invoice_item->subtotal1 = $invoice_item->item_quantity * $invoice_item->unit_price;
-                        $invoice->subtotal1=$invoice_item->item_quantity * $invoice_item->unit_price;
 
 			$invoice_item->item_discount_type = ($request->has('line_item_discount') && array_key_exists($key, $discount_types)) ? 1 : 0;
 			$invoice_item->item_tax = ($request->has('line_item_tax')) ? $taxations[$key] : 0;
@@ -627,12 +629,10 @@ Class InvoiceController extends Controller{
 				$item_amount -= $item_amount*($invoice_item->item_discount/100);
 
                         $invoice_item->subtotal2 = $item_amount;
-                        $invoice->subtotal2 = $item_amount;
 
 
 			$item_amount += $item_amount*($invoice_item->item_tax/100);
                         $invoice_item->subtotal3 = $item_amount;
-                        $invoice->subtotal3 = $item_amount;
 			$invoice_item->item_amount = round($item_amount,$currency->decimal_place);
 			$invoice_item->save();
 
@@ -665,10 +665,6 @@ Class InvoiceController extends Controller{
 		    }
 		}
 
-        //Generando archivo de texto
-        // todo  cargar plantilla
-        // todo sustituir campos
-        // todo guardar texto en base de datos
 
 
 		if($request->input('form_action') == 'send'){

@@ -97,7 +97,8 @@
   },
   "autoload": {
     "classmap": [
-      "database"
+      "database",
+      "app/Helper/helper.php"
     ],
     "psr-4": {
       "App\\": "app/"

@@ -624,6 +624,6 @@
 'after'=>'Después',
 'minlength'=>'Longitud mínima',
 'maxlength'=>'Longitud máxima',
-
+'neighbourhood'=>'barrio'
 
 );

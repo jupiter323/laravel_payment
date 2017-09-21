@@ -159,7 +159,6 @@ $profile->tax_reg_name= ($request->has('tax_reg_name')) ? $request->input('tax_r
 $profile->tax_id= ($request->has('tax_id')) ? $request->input('tax_id') : null;
 $profile->national_id= ($request->has('national_id')) ? $request->input('national_id') : null;
 $profile->business_type= ($request->has('business_type')) ? $request->input('business_type') : null;
-$profile->tax_regimen= ($request->has('tax_regimen')) ? $request->input('tax_regimen') : null;
 $profile->neighboorhood= ($request->has('neighboorhood')) ? $request->input('neighboorhood') : null;
 $profile->int_num= ($request->has('int_num')) ? $request->input('int_num') : null;
 $profile->ext_num= ($request->has('ext_num')) ? $request->input('ext_num') : null;

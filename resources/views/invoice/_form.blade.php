@@ -174,11 +174,11 @@
 						    <li><div class="checkbox"><label>{!! Form::checkbox('line_item_discount',1,(isset($invoice) && $invoice->line_item_discount) ? 'checked' : ((!isset($invoice) && config('config.default_line_item_discount')) ? 'checked' : ''),['id' => 'line_item_discount','class' => 'icheck']) !!} {{trans('messages.discount')}}</label></div></li>
 						    <li><div class="checkbox"><label>{!! Form::checkbox('line_item_description', 1,(isset($invoice) && $invoice->line_item_description) ? 'checked' : ((!isset($invoice) && config('config.default_line_item_description')) ? 'checked' : ''),['id' => 'line_item_description','class' => 'icheck']) !!} {{trans('messages.description')}}</label></div></li>
 
-<li><div class="checkbox"><label>{!! Form::checkbox('subtotal1',1,(isset($invoice) && $invoice->subtotal1) ? 'checked' : ((!isset($invoice) && config('config.subtotal1')) ? 'checked' : ''),['id' => 'subtotal1','class' => 'icheck']) !!} {{trans('messages.subtotal').' '.trans('messages.one')}}</label></div></li>
+<li><div class="checkbox"><label>{!! Form::checkbox('subtotal1',1,(isset($invoice) && $invoice->subtotal1) ? 'checked' : ((!isset($invoice) && config('config.subtotal1')) ? 'checked' : ''),['id' => 'subtotal1','class' => 'icheck']) !!} {{trans('messages.subtotal')}}</label></div></li>
 
-<li><div class="checkbox"><label>{!! Form::checkbox('subtotal2', 1,(isset($invoice) && $invoice->subtotal2) ? 'checked' : ((!isset($invoice) && config('config.subtotal2')) ? 'checked' : ''),['id' => 'subtotal2','class' => 'icheck']) !!} {{trans('messages.subtotal').' '.trans('messages.two')}}</label></div></li>
+<li><div class="checkbox"><label>{!! Form::checkbox('subtotal2', 1,(isset($invoice) && $invoice->subtotal2) ? 'checked' : ((!isset($invoice) && config('config.subtotal2')) ? 'checked' : ''),['id' => 'subtotal2','class' => 'icheck']) !!} {{trans('messages.subtotal').' '.trans('messages.discount')}}</label></div></li>
 
-<li><div class="checkbox"><label>{!! Form::checkbox('subtotal3', 1,(isset($invoice) && $invoice->subtotal3) ? 'checked' : ((!isset($invoice) && config('config.subtotal3')) ? 'checked' : ''),['id' => 'subtotal3','class' => 'icheck']) !!} {{trans('messages.subtotal').' '.trans('messages.three')}}</label></div></li>
+<li><div class="checkbox"><label>{!! Form::checkbox('subtotal3', 1,(isset($invoice) && $invoice->subtotal3) ? 'checked' : ((!isset($invoice) && config('config.subtotal3')) ? 'checked' : ''),['id' => 'subtotal3','class' => 'icheck']) !!} {{trans('messages.subtotal').' '.trans('messages.tax')}}</label></div></li>
 
 
 						    <li role="separator" class="divider"></li>
@@ -296,16 +296,16 @@ $invoice->payment_split: '' ,['class'=>'form-control','placeholder'=>trans('mess
 <th class="item-unit item-unit-header">{{trans('messages.unit')}}</th>
 									<th class="item-price item-price-header">{{trans('messages.price')}}</th>
                                                                  <th class="item-subtotal1">{{trans('messages.subtotal')}} 
- {{trans('messages.one')}}</th>
+</th>
  
  
 									<th class="item-discount">{{trans('messages.discount')}}</th>
 <th class="item-subtotal2">{{trans('messages.subtotal')}} 
- {{trans('messages.two')}}</th>
+ {{trans('messages.discount')}}</th>
 									<th class="item-tax">{{trans('messages.tax')}} (%)</th>
 
 <th class="item-subtotal3">{{trans('messages.subtotal')}} 
- {{trans('messages.three')}}</th>
+ {{trans('messages.tax')}}</th>
 									<th style="width:150px;">{{trans('messages.amount')}}</th>
                                                                       
 								</tr>
