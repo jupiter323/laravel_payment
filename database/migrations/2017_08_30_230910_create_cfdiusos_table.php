@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateCfdiusosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-       /* Schema::create('users', function (Blueprint $table) {
+        //Creando tabla para catalogo de uss cfdi
+        Schema::create('cfdiusos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('clave',4);
+            $table->string('descripcion',250);
             $table->timestamps();
-        }); */
+            $table->softDeletes();
+        });
     }
 
     /**
@@ -30,6 +30,7 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        /*Schema::dropIfExists('users');*/
+        //Borrando tabla
+        Schema::dropIfExists('cfdiusos');
     }
 }
