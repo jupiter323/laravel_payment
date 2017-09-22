@@ -140,14 +140,14 @@ class WMLab
         $default_timezone = config('config.timezone_id') ? config('timezone.'.config('config.timezone_id')) : 'Asia/Kolkata';
         date_default_timezone_set($default_timezone);
 
-        $default_localization = (Session::has('localization')) ? session('localization') : ((config('config.default_localization')) ? : 'en' );
+        $default_localization = (Session::has('localization')) ? session('localization') : ((config('config.default_localization')) ? : 'es' );
 
         session(['localization' => $default_localization]);
         \App::setLocale($default_localization);
 
-        $datatable_localization = (config('localization.'.$default_localization.'.datatable')) ? : 'English';
-        $calendar_localization = (config('localization.'.$default_localization.'.calendar')) ? : 'en';
-        $datepicker_localization = (config('localization.'.$default_localization.'.datepicker')) ? : 'en';
+        $datatable_localization = (config('localization.'.$default_localization.'.datatable')) ? : 'Spanish';
+        $calendar_localization = (config('localization.'.$default_localization.'.calendar')) ? : 'es';
+        $datepicker_localization = (config('localization.'.$default_localization.'.datepicker')) ? : 'es';
         $direction = (config('config.direction')) ? : 'ltr';
         view()->share(compact('direction','default_localization','datatable_localization','calendar_localization','datepicker_localization','menus','menu','setup_guide','right_sidebar'));
 
