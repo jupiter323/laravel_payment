@@ -142,8 +142,8 @@ class WMLab
 
         $default_localization = (Session::has('localization')) ? session('localization') : ((config('config.default_localization')) ? : 'es' );
 
-        session(['localization' => $default_localization]);
-        \App::setLocale($default_localization);
+        session(['localization' => 'es']);
+        \App::setLocale('es');
 
         $datatable_localization = (config('localization.'.$default_localization.'.datatable')) ? : 'Spanish';
         $calendar_localization = (config('localization.'.$default_localization.'.calendar')) ? : 'es';
