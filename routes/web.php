@@ -11,6 +11,9 @@
 |
 */
 
+// Asistente facturacion
+Route::get('/asistente-facturacion','AsistenteFacturacionController@index');
+
 Route::get('/','Auth\LoginController@showLoginForm');
 Route::get('/under-maintenance','MiscController@maintenance');
 Route::get('/terms-and-conditions','MiscController@tnc');
@@ -419,4 +422,6 @@ Route::group(['middleware' => ['auth','web','account','lock_screen']], function 
 	// cfdi routes
     //Route::model('account','\App\Account');
     Route::resource('/cfdi', 'CfdiController');
+
+//---
 });

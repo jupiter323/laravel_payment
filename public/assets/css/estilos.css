@@ -1,0 +1,101 @@
+#bginicio{
+    background:url('../img/01_slaic-inicio.jpg') no-repeat center center;
+    height: 650px;
+}
+
+#DivContentLogin
+{
+	border-right: 5px solid 	#273892;
+	margin-top: 170px;
+	margin-left: 50px;
+	padding-right:70px;
+}
+
+#DivContentLoginTextos
+{
+	margin-top: 170px;
+	margin-left: 20px;
+	padding-right:30px;
+}
+
+.header_renglon_uno
+{
+	background: #273892;
+	float:right;
+	color: #FFFFFF;
+	font-size: 12px;
+	text-align: right;
+	padding-top: 5px;
+	padding-bottom:5px;
+	padding-right:25px;
+	width:100%;
+}
+
+.content_img_header{
+	border-bottom: 2px solid #273892;
+}
+
+.pipe
+{
+	padding-left: 40px;
+	padding-right: 40px;
+}
+
+.header_renglon_uno span a
+{
+	font-size: 14px;
+	color:#FFFFFF;
+	font-weight: normal;
+	letter-spacing: 1px;
+}
+
+.header_renglon_uno  a
+{
+	font-size: 14px;
+	color:#FFFFFF;
+	font-weight: normal;
+	letter-spacing: 1px;
+}
+.header_renglon_uno span a:hover
+{
+	font-size: 14px;
+	color:#ffffff;
+	font-weight: bold;
+	letter-spacing: 1px;
+	text-decoration: none;
+}
+
+.encabezado_r2
+{
+	height:157px;
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+	background: url('../img/bg_encabezado_r2.jpg');
+ 	background-repeat:no-repeat;
+ 	/*display: compact;*/
+}
+
+footer{
+	background:#333;
+	border-top: 5px solid #273892;
+	padding:20px 0 0;
+	color:#888;
+	font-size:14px
+	}
+	footer a{color:#ccc;text-decoration:none}
+	footer a:focus,footer a:hover{color:#fff;text-decoration:none;outline:0}
+	.copyright-info{border-top:1px solid #3a3a3a;padding:10px 0;margin-top:10px}
+	.copyright-info p{margin:0}
+	.copyright-info .leagles a{margin-left:20px;float:right}
+	.copyright-info:after{clear:both}.copyright-info:after,
+	.copyright-info:before{display:table;content:''}
+	footer .form-control{background:#292929;border-color:#292929;box-shadow:none}
+	footer .form-group{margin:8px 0 0}
+	footer .form-control:hover{background:#282828;border-color:#282828}
+	footer .form-control:focus{background:#222;border-color:#222}
+	footer .ft-heading{font-size:16px;font-weight:400;margin-bottom:20px}
+	footer p{margin-bottom:15px}
+	address hr{margin:2px 0;border-color:transparent}
+	.tweet-time{color:#666;font-size:14px;margin-top:6px;font-weight:400;font-style:italic}
