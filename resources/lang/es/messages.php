@@ -68,7 +68,7 @@
   'list_all' => 'Listar todo',
   'option' => 'Opción',
   'percentage' => 'Porcentaje',
-  'home' => 'Casa',
+  'home' => 'Inicio',
   'cannot_delete_default_localization' => 'La localización por defecto no se puede borrar.',
   'cannot_delete_primary_localization' => 'No se puede eliminar la localización primaria.',
   'localization_already_added' => 'Esta localización ya está agregada.',
@@ -582,7 +582,7 @@
 'general'=>'General',
 'configuration'=>'Configuración',
 'advanced'=>'Avanzado',
-'accountability'=>'Responsabilidad',
+'accountability'=>'Contabilidad',
 'location'=>'Ubicación',
 'logo_for_app'=>'Logo para la aplicación',
 'logo_for_mail'=>'Logotipo para la plantilla de correo electrónico',
@@ -624,6 +624,7 @@
 'after'=>'Después',
 'minlength'=>'Longitud mínima',
 'maxlength'=>'Longitud máxima',
-'neighbourhood'=>'barrio'
+'neighbourhood'=>'barrio',
+'cfdis'=> "CFDI's"
 
 );

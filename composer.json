@@ -97,7 +97,9 @@
   },
   "autoload": {
     "classmap": [
-      "database",
+      "database"
+    ],
+    "files": [
       "app/Helper/helper.php"
     ],
     "psr-4": {

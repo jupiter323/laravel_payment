@@ -415,4 +415,8 @@ Route::group(['middleware' => ['auth','web','account','lock_screen']], function 
 	Route::patch('/transaction/{transaction_id}',array('as' => 'transaction.update','uses' => 'TransactionController@update'));
 	Route::delete('/transaction/{id}', array('as' => 'transaction.destroy', 'uses' => 'TransactionController@destroy'));
 	Route::post('/transaction/fetch','TransactionController@fetch');
+
+	// cfdi routes
+    //Route::model('account','\App\Account');
+    Route::resource('/cfdi', 'CfdiController');
 });

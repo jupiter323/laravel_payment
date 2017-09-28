@@ -15,10 +15,12 @@
 
 
 <li class="no-sort {!! (in_array('home',$menu)) ? 'active' : '' !!} {!! menuAttr($menus,'home') !!}><a href="/home"><i class="fa fa-home icon"></i> {!! trans('messages.home') !!}</a></li>
-	
-	
 
-	
+
+
+	@if(Entrust::can('list-account'))
+		<li class="no-sort {!! (in_array('account',$menu)) ? 'active' : '' !!} {!! menuAttr($menus,'account') !!}><a href="/cfdis"><i class="fa fa-file-text icon"></i> {!! trans('messages.cfdis') !!}</a></li>
+	@endif
 
 	@if(Entrust::can('list-account'))
 		<li class="no-sort {!! (in_array('account',$menu)) ? 'active' : '' !!} {!! menuAttr($menus,'account') !!}><a href="/account"><i class="fa fa-briefcase icon"></i> {!! trans('messages.accountability') !!}</a></li>
