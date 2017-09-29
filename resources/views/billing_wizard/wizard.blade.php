@@ -89,18 +89,13 @@
                                     <form role="form">
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Número de Ticket *</label>
-                                            <input type="text" class="form-control" value="123456789087654321123456">
+                                            <input  type="text" id="f1Ticket" class="form-control" value="" placeholder="123456789087654321123456">
                                         </div>
                                         <div class="form-group">
                                             <label for="rfc">RFC *</label>
-                                            <input id="txtTaxid" type="text" name="rfc" class="form-control"  value="AAA010101AAA">
+                                            <input id="txtTaxid"  type="text" name="rfc" class="form-control"  value="" placeholder="AAA010101AAA" required>
                                         </div>
                                         <br>
-                                        <div>
-                                            <a  href="asistenteCliente.html" class="btn btn-danger">
-                                                Cancelar
-                                            </a>
-                                        </div>
                                     </form>
                                 </div>
                             </div>
@@ -111,81 +106,39 @@
                                         <h4><strong>Edite sus datos y presione siguiente:</strong></h4>
                                         <hr class="wide">
                                         <div class="form-group">
-                                            <label for="razonSocial">Razón Social</label>
-                                            <input type="text" name="razonSocial"class="form-control" value="Acme S.A. de C.V." >
+                                            <label for="tax_reg_name">Razón Social</label>
+                                            <input id="txtTax_reg_name" type="text" name="tax_reg_name" class="form-control" placeholder="" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="rfc">RFC</label>
-                                            <input type="text" name="rfc" class="form-control" value="AAA010101AAA">
+                                            <label for="tax_id">RFC</label>
+                                            <input id="txtTax_id" type="text" name="tax_id" class="form-control" placeholder="">
                                         </div>
                                         <div class="form-group">
-                                            <label for="calle">Calle</label>
-                                            <input type="text" name="calle" class="form-control" value="Av. Siempre Viva" >
+                                            <label for="address_line_1">Dirección</label>
+                                            <input id="txtAddress_line_1" type="text" name="address_line_1" class="form-control" placeholder="" >
                                         </div>
                                         <div class="form-group">
-                                            <label for="numExt">Núm. Ext</label>
-                                            <input type="text" name="numExt" class="form-control"  value="1">
+                                            <label for="neighborhood">Colonia</label>
+                                            <input id = "txtNeighbourhood" type="text" name="neighborhood" class="form-control" placeholder="" >
                                         </div>
                                         <div class="form-group">
-                                            <label for="numInt">Núm. Int</label>
-                                            <input type="text" name="numInt" class="form-control" value="" >
+                                            <label for="zicode">Código Postal</label>
+                                            <input id="txtZipcode" type="text" name="zicode" class="form-control" placeholder="" >
                                         </div>
                                         <div class="form-group">
-                                            <label for="colonia">Colonia</label>
-                                            <input type="text" name="colonia" class="form-control" value="Centro" >
+                                            <label for="city">Municipio/Delegación</label>
+                                            <input id="txtCity" type="text" name="city" class="form-control" placeholder="">
                                         </div>
                                         <div class="form-group">
-                                            <label for="cp">Código Postal</label>
-                                            <input type="text" name="cp" class="form-control" value="77777" >
+                                            <label for="state">Estado</label>
+                                            <input id="txtState" type="text" name="state" class="form-control" placeholder="">
                                         </div>
-                                        <div class="form-group">
-                                            <label for="municipio">Municipio/Delegación</label>
-                                            <input type="text" name="municipio" class="form-control" value="San Luis Potosí">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="estado">Estado</label>
-                                            <select name="estado" class="form-control">
-                                                <option value="SP">SAN LUIS POTOSI</option>
-                                                <option value="">- Seleccione -</option>
-                                                <option value="AS">AGUASCALIENTES</option>
-                                                <option value="BC">BAJA CALIFORNIA</option>
-                                                <option value="BS">BAJA CALIFORNIA SUR</option>
-                                                <option value="CC">CAMPECHE</option>
-                                                <option value="CL">COAHUILA DE ZARAGOZA</option>
-                                                <option value="CM">COLIMA</option>
-                                                <option value="CS">CHIAPAS</option>
-                                                <option value="CH">CHIHUAHUA</option>
-                                                <option value="DF">DISTRITO FEDERAL</option>
-                                                <option value="DG">DURANGO</option>
-                                                <option value="GT">GUANAJUATO</option>
-                                                <option value="GR">GUERRERO</option>
-                                                <option value="HG">HIDALGO</option>
-                                                <option value="JC">JALISCO</option>
-                                                <option value="MC">MEXICO</option>
-                                                <option value="MN">MICHOACAN DE OCAMPO</option>
-                                                <option value="MS">MORELOS</option>
-                                                <option value="NT">NAYARIT</option>
-                                                <option value="NL">NUEVO LEON</option>
-                                                <option value="OC">OAXACA</option>
-                                                <option value="PL">PUEBLA</option>
-                                                <option value="QT">QUERETARO DE ARTEAGA</option>
-                                                <option value="QR">QUINTANA ROO</option>
-                                                <option value="SL">SINALOA</option>
-                                                <option value="SR">SONORA</option>
-                                                <option value="TC">TABASCO</option>
-                                                <option value="TS">TAMAULIPAS</option>
-                                                <option value="TL">TLAXCALA</option>
-                                                <option value="VZ">VERACRUZ</option>
-                                                <option value="YN">YUCATAN</option>
-                                                <option value="ZS">ZACATECAS</option>
-                                            </select>
-                                        </div>
-                                        <label for="email">Email</label>
-                                        <input name="email" type="email" class="form-control" value="email@cliente.com">
+                                        <label for="work_email">Email</label>
+                                        <input id="txtWork_email" name="work_email" type="email" class="form-control" placeholder="">
                                         <br>
                                         <div>
-                                            <a  href="asistenteCliente.html" class="btn btn-danger">
-                                                Cancelar
+                                            <a  href="./billing-wizard" class="btn btn-danger">
+                                                 Cancelar
                                             </a>
                                         </div>
                                     </form>
@@ -627,15 +580,36 @@
         //Creando los eventos dentro del wizard
         $('#simplewizard').on('change', function (evt, data) {
             if(data.step == 1 ){     //Tax_id (RFC) check;
+                //validations
+                if(!$("#f1Ticket").val() || !$("#txtTaxid").val()){
+                    evt.preventDefault();
+                    alert("Es necesario ingresar un ticket y un RFC v'alidos");
+                    return false;
+                }
+
                 if(ajaxquery){
-                    evt.preventDefault()
+                    evt.preventDefault();
                     $.ajax({
                         method: "GET",
                         url: "{{URL::to('billing-wizard/customer/taxid')}}" + "/" + $("#txtTaxid").val()
                     })
                         .done(function( response ) {
                             response  = eval("(" + response + ')');
-                            alert( "Data received: " + response.data.first_name );
+
+                            if(response.status == "ok"){
+                                $("#txtTax_reg_name").val(response.data.reg_name);
+                                $("#txtTax_id").val(response.data.tax_id);
+                                $("#txtAddress_line_1").val(response.data.address_line_1);
+                                $("#txtNeighbourhood").val(response.data.Neighbourhood);
+                                $("#txtZipcode").val(response.data.zipcode);
+                                $("#txtCity").val(response.data.city);
+                                $("#txtWork_name").val(response.data.state);
+                                $("#txtWork_email").val(response.data.work_email);
+                            }
+
+                            if(response.status == "not_found"){
+                                alert("No tenemos registrados sus datos en nuestro sistema, porfavor rellene los datos a continuacion");
+                            }
                             ajaxquery = false;
                             $('#simplewizard').wizard('next');
                         });
