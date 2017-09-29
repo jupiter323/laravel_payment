@@ -579,7 +579,7 @@
         var ajaxquery = true;
         //Creando los eventos dentro del wizard
         $('#simplewizard').on('change', function (evt, data) {
-            if(data.step == 1 ){     //Tax_id (RFC) check;
+            if(data.step == 1 ){     // step 1 Tax_id (RFC) check;
                 //validations
                 if(!$("#f1Ticket").val() || !$("#txtTaxid").val()){
                     evt.preventDefault();
@@ -597,13 +597,13 @@
                             response  = eval("(" + response + ')');
 
                             if(response.status == "ok"){
-                                $("#txtTax_reg_name").val(response.data.reg_name);
+                                $("#txtTax_reg_name").val(response.data.tax_reg_name);
                                 $("#txtTax_id").val(response.data.tax_id);
                                 $("#txtAddress_line_1").val(response.data.address_line_1);
-                                $("#txtNeighbourhood").val(response.data.Neighbourhood);
+                                $("#txtNeighbourhood").val(response.data.neighboorhood);
                                 $("#txtZipcode").val(response.data.zipcode);
                                 $("#txtCity").val(response.data.city);
-                                $("#txtWork_name").val(response.data.state);
+                                $("#txtState").val(response.data.state);
                                 $("#txtWork_email").val(response.data.work_email);
                             }
 
@@ -619,9 +619,27 @@
                 ajaxquery = true;
             }
 
-            if(data.step == 2 && data.direction == 'next'){
+            if(data.step == 2 && data.direction == 'next'){ // step 2 userdata updating and displaying ticket data
 
             }
+
+            if(data.step == 3 && data.direction == 'next'){ // step 3 web service process
+                if(ajaxquery){
+                    evt.preventDefault();
+                    $.ajax({
+                        method: "GET",
+                        url: "{{URL::to('billing-wizard/process')}}",
+                        data : "profileid=13"
+                    })
+                        .done(function( response ) {
+                            alert("ok!!!");
+                            ajaxquery = false;
+                            $('#simplewizard').wizard('next');
+                        });
+                }
+            }
+
+
         });
         //$('#WiredWizard').wizard();
     });

@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 
 use App\Profile;
+use Artisaninweb\SoapWrapper\SoapWrapper;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -37,6 +38,39 @@ class BillingWizardController extends BaseController
         }
 
         echo json_encode($response);
+
+    }
+
+    public function process(){
+
+        $profileId = 13;
+        $profile = Profile::find($profileId);
+
+        echo $profile->tax_reg_name;
+
+        $xsaDomain = env("XSA_DOMAIN");
+        $xsaRfc = env("XSA_RFC");
+        $xsaKey = env("XSA_KEY");
+
+       $soapWrapper = new SoapWrapper();
+        $soapWrapper->add('XSA', function ($service) use ($xsaDomain) {
+            $service
+                ->wsdl("https://{$xsaDomain}/xsamanager/services/FileReceiverService?wsdl")
+                ->trace(true);
+        });
+
+        // Without classmap
+        $response = $soapWrapper->call('XSA.guardarDocumento', [
+            [
+                'in0' => $xsaKey."-".$xsaRfc, //key parameter
+                'in1' => "", //empresaOsucursal  parameter
+                'in2' => "", //tipoDocumento  parameter
+                'in3' => "", //nombreDocumento  parameter
+                'in4' => "" //contenidoDocumento parameter
+            ]
+        ]);
+
+        var_dump($response);
 
     }
 }
