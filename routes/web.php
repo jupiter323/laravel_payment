@@ -12,7 +12,8 @@
 */
 
 // Asistente facturacion
-Route::get('/asistente-facturacion','AsistenteFacturacionController@index');
+Route::get('/billing-wizard','BillingWizardController@index');
+Route::get('/billing-wizard/customer/taxid/{rfc}','BillingWizardController@getCustomerByTaxid');
 
 Route::get('/','Auth\LoginController@showLoginForm');
 Route::get('/under-maintenance','MiscController@maintenance');

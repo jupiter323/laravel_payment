@@ -93,7 +93,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="rfc">RFC *</label>
-                                            <input type="text" name="rfc" class="form-control"  value="AAA010101AAA">
+                                            <input id="txtTaxid" type="text" name="rfc" class="form-control"  value="AAA010101AAA">
                                         </div>
                                         <br>
                                         <div>
@@ -623,15 +623,29 @@
             Notify('Thank You! All of your information saved successfully.', 'bottom-right', '5000', 'blue', 'fa-check', true);
         });
 
+        var ajaxquery = true;
         //Creando los eventos dentro del wizard
         $('#simplewizard').on('change', function (evt, data) {
-            alert ('funciono');
-            if(data.step == 1){
-                //Paso uno revision del rfc en los usuarios
-
+            if(data.step == 1 ){     //Tax_id (RFC) check;
+                if(ajaxquery){
+                    evt.preventDefault()
+                    $.ajax({
+                        method: "GET",
+                        url: "{{URL::to('billing-wizard/customer/taxid')}}" + "/" + $("#txtTaxid").val()
+                    })
+                        .done(function( response ) {
+                            response  = eval("(" + response + ')');
+                            alert( "Data received: " + response.data.first_name );
+                            ajaxquery = false;
+                            $('#simplewizard').wizard('next');
+                        });
+                }
+            }
+            else{
+                ajaxquery = true;
             }
 
-            if(data.step == 2){
+            if(data.step == 2 && data.direction == 'next'){
 
             }
         });
