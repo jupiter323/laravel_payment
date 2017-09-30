@@ -102,7 +102,8 @@
                             <div class="step-pane" id="simplewizardstep2">
                                 <div class="widget-main no-padding">
                                     <br>
-                                    <form role="form">
+                                    <form id="frmStep2" role="form">
+                                        <input id="hdnId" type="hidden" name="id" value="">
                                         <h4><strong>Edite sus datos y presione siguiente:</strong></h4>
                                         <hr class="wide">
                                         <div class="form-group">
@@ -118,12 +119,12 @@
                                             <input id="txtAddress_line_1" type="text" name="address_line_1" class="form-control" placeholder="" >
                                         </div>
                                         <div class="form-group">
-                                            <label for="neighborhood">Colonia</label>
-                                            <input id = "txtNeighbourhood" type="text" name="neighborhood" class="form-control" placeholder="" >
+                                            <label for="neighboorhood">Colonia</label>
+                                            <input id = "txtNeighbourhood" type="text" name="neighboorhood" class="form-control" placeholder="" >
                                         </div>
                                         <div class="form-group">
-                                            <label for="zicode">Código Postal</label>
-                                            <input id="txtZipcode" type="text" name="zicode" class="form-control" placeholder="" >
+                                            <label for="zipcode">Código Postal</label>
+                                            <input id="txtZipcode" type="text" name="zipcode" class="form-control" placeholder="" >
                                         </div>
                                         <div class="form-group">
                                             <label for="city">Municipio/Delegación</label>
@@ -573,11 +574,14 @@
     jQuery(function ($) {
         $('#simplewizard').wizard();
         $('#simplewizard').on('finished', function (e) {
-            Notify('Thank You! All of your information saved successfully.', 'bottom-right', '5000', 'blue', 'fa-check', true);
+            Notify('Gracias por usar nuestro servicio de facturación.', 'bottom-right', '5000', 'blue', 'fa-check', true);
+            //$.delay(2000);
+            window.location.href = "{{URL::to('billing-wizard')}}";
         });
 
         var ajaxquery = true;
-        //Creando los eventos dentro del wizard
+        var ajaxquery2 = true;
+        var ajaxquery3 = true;        //Creando los eventos dentro del wizard
         $('#simplewizard').on('change', function (evt, data) {
             if(data.step == 1 ){     // step 1 Tax_id (RFC) check;
                 //validations
@@ -597,6 +601,7 @@
                             response  = eval("(" + response + ')');
 
                             if(response.status == "ok"){
+                                $("#hdnId").val(response.data.id);
                                 $("#txtTax_reg_name").val(response.data.tax_reg_name);
                                 $("#txtTax_id").val(response.data.tax_id);
                                 $("#txtAddress_line_1").val(response.data.address_line_1);
@@ -620,20 +625,34 @@
             }
 
             if(data.step == 2 && data.direction == 'next'){ // step 2 userdata updating and displaying ticket data
-
+                if(ajaxquery2){
+                    evt.preventDefault();
+                    $.ajax({
+                        method: "GET",
+                        url: "{{URL::to('billing-wizard/update')}}",
+                        data : $("#frmStep2").serialize()
+                    })
+                        .done(function( response ) {
+                            response  = eval("(" + response + ')');
+                            $("#hdnId").val(response.data.id);
+                            Notify('Tus datos se actualizaron correctamente.', 'bottom-right', '5000', 'blue', 'fa-check', true);
+                            ajaxquery2 = false;
+                            $('#simplewizard').wizard('next');
+                        });
+                }
             }
 
             if(data.step == 3 && data.direction == 'next'){ // step 3 web service process
-                if(ajaxquery){
+                if(ajaxquery3){
                     evt.preventDefault();
                     $.ajax({
                         method: "GET",
                         url: "{{URL::to('billing-wizard/process')}}",
-                        data : "profileid=13"
+                        data : "profileid=" + $("#hdnId").val()
                     })
                         .done(function( response ) {
-                            alert("ok!!!");
-                            ajaxquery = false;
+                            Notify('Los datos de tu factura se enviaron correctamente.', 'bottom-right', '5000', 'blue', 'fa-check', true);
+                            ajaxquery3 = false;
                             $('#simplewizard').wizard('next');
                         });
                 }

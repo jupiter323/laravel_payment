@@ -15,6 +15,7 @@
 Route::get('/billing-wizard','BillingWizardController@index');
 Route::get('/billing-wizard/customer/taxid/{rfc}','BillingWizardController@getCustomerByTaxid');
 Route::get('/billing-wizard/process','BillingWizardController@process');
+Route::get('/billing-wizard/update','BillingWizardController@update');
 
 Route::get('/','Auth\LoginController@showLoginForm');
 Route::get('/under-maintenance','MiscController@maintenance');

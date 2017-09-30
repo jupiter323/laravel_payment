@@ -43,10 +43,16 @@ class BillingWizardController extends BaseController
 
     public function process(){
 
-        $profileId = 13;
+        $profileId = $_GET['profileid'];
         $profile = Profile::find($profileId);
+        $date = new \DateTime();
+        $data['profile'] = $profile;
+        $notification = new \stdClass();
+        $notification->subject = "Nueva Factura";
+        $notification->message = "Enviamos su nueva factura";
+        $data['notification'] = $notification;
+        $fileContent = view('txt_templates.base32', $data);
 
-        echo $profile->tax_reg_name;
 
         $xsaDomain = env("XSA_DOMAIN");
         $xsaRfc = env("XSA_RFC");
@@ -63,14 +69,33 @@ class BillingWizardController extends BaseController
         $response = $soapWrapper->call('XSA.guardarDocumento', [
             [
                 'in0' => $xsaKey."-".$xsaRfc, //key parameter
-                'in1' => "", //empresaOsucursal  parameter
-                'in2' => "", //tipoDocumento  parameter
-                'in3' => "", //nombreDocumento  parameter
-                'in4' => "" //contenidoDocumento parameter
+                'in1' => "DEMO PRUEBA", //empresaOsucursal  parameter
+                'in2' => "base32", //tipoDocumento  parameter
+                'in3' => "{$profile->tax_id}_base32_".$date->getTimestamp().".txt", //nombreDocumento  parameter
+                'in4' => $fileContent //contenidoDocumento parameter
             ]
         ]);
 
         var_dump($response);
 
+    }
+
+    public function update(){
+        if(isset($_GET['id']) &&  $_GET['id'] ){ // El perfil existe
+            $profile = Profile::find($_GET['id']);
+        }
+        else{
+            $profile = new Profile();
+            unset($_GET['id']);
+        }
+
+        foreach($_GET as $field => $value){
+            $profile->$field = $value;
+        }
+
+        $profile->save();
+
+        $response['data'] = $profile;
+        return json_encode($response);
     }
 }
