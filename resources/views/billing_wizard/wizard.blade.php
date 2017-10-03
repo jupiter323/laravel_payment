@@ -537,7 +537,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
-                    <p>Copyright &copy; <a href="http://www.oscodo.com/"> Mi Tecnología México  </a> , 2014.</p>
+                    <p>Todos los derechos reservados  &copy; FIA &copy; <a target="_blank" href="http://mitecnologiamexico.com/"> Mi Tecnología México  </a> , 2017.</p>
                 </div>
                 <div class="col-sm-6 leagles"> <a href="#" style="color:#0a75bd"> Política de Privacidad </a> <a href="#" style="color:#0a75bd"> Términos de uso </a> </div>
             </div>
