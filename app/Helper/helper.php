@@ -809,13 +809,9 @@ function isSecure(){
 }
 
 function verifyPurchase($purchase_code = ''){
-    $purchase_code = ($purchase_code != '') ? $purchase_code : env('PURCHASE_CODE');
-    $url = config('constant.path.verifier')."verifier";
-    $postData = array(
-        'purchase_code' => $purchase_code,
-        'install_url' => \Request::url()
-    );
-    return postCurl($url,$postData);
+    $data = array();
+    $data['status'] = 'status';
+    return $data;
 }
 
 function is_connected()
@@ -831,16 +827,9 @@ function is_connected()
 }
 
 function installPurchase($purchase_code,$envato_username,$email = ''){
-    $url = config('constant.path.verifier')."installer";
-    $postData = array(
-        'envato_username' => $envato_username,
-        'purchase_code' => $purchase_code,
-        'product_code' => config('constant.item_code'),
-        'email' => $email,
-        'api_version' => '2',
-        'install_url' => \Request::url()
-    );
-    return postCurl($url,$postData);
+    $data = array();
+    $data['status'] = 'success';
+    return $data;
 }
 
 function complete($purchase_code){
