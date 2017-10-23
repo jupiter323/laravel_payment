@@ -72,7 +72,10 @@ class BillingWizardController extends BaseController
         $xsaRfc = $company->xsa_rfc;
         $xsaKey = $company->xsa_key;
 
-       $soapWrapper = new SoapWrapper();
+
+        // by SOAP
+        //*************************
+        $soapWrapper = new SoapWrapper();
         $soapWrapper->add('XSA', function ($service) use ($xsaDomain) {
             $service
                 ->wsdl("https://{$xsaDomain}/xsamanager/services/FileReceiverService?wsdl")
@@ -89,9 +92,33 @@ class BillingWizardController extends BaseController
                 'in4' => $fileContent //contenidoDocumento parameter
             ]
         ]);
+        //********************************
+
+        // by REST
+        //********************************
+        /*
+        $putdata = http_build_query(
+            array(
+                'idTipoCfd' => 'base32',
+                'idSucursal' => 'DEMO PRUEBA',
+                'archivoFuent' => $fileContent
+            )
+        );
+
+        $opts = array('http' =>
+            array(
+                'method'  => '$fileContent',
+                'header'  => 'Content-type: application/x-www-form-urlencoded',
+                'content' => $putdata
+            )
+        );
+
+        $context  = stream_context_create($opts);
+        $response = @file_get_contents("https://{$xsaDomain}/{$xsaKey}/cfdis", false, $context);
+        */
+        //********************************
 
         var_dump($response);
-
     }
 
     public function update(){
