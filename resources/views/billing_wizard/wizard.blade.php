@@ -648,7 +648,7 @@
                     $.ajax({
                         method: "GET",
                         url: "{{URL::to('billing-wizard/process')}}",
-                        data : "profileid=" + $("#hdnId").val()
+                        data : "profileid=" + $("#hdnId").val() + "&company_id={{$company->id}}"
                     })
                         .done(function( response ) {
                             Notify('Los datos de tu factura se enviaron correctamente.', 'bottom-right', '5000', 'blue', 'fa-check', true);

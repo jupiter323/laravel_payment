@@ -33,7 +33,8 @@ class BillingWizardController extends BaseController
         }
 
         //loading assistant view
-        return \Illuminate\Support\Facades\View::make('billing_wizard/wizard');
+        $data['company'] = $company;
+        return \Illuminate\Support\Facades\View::make('billing_wizard/wizard',$company);
     }
 
     public function getCustomerByTaxid($taxid){
@@ -55,6 +56,8 @@ class BillingWizardController extends BaseController
     public function process(){
 
         $profileId = $_GET['profileid'];
+        $companyId = $_GET['company_id'];
+        $company = Company::find($companyId);
         $profile = Profile::find($profileId);
         $date = new \DateTime();
         $data['profile'] = $profile;
@@ -64,10 +67,10 @@ class BillingWizardController extends BaseController
         $data['notification'] = $notification;
         $fileContent = view('txt_templates.base32', $data);
 
-
-        $xsaDomain = env("XSA_DOMAIN");
-        $xsaRfc = env("XSA_RFC");
-        $xsaKey = env("XSA_KEY");
+        //Setting xsa params by company
+        $xsaDomain = $company->xsa_domain;
+        $xsaRfc = $company->xsa_rfc;
+        $xsaKey = $company->xsa_key;
 
        $soapWrapper = new SoapWrapper();
         $soapWrapper->add('XSA', function ($service) use ($xsaDomain) {
