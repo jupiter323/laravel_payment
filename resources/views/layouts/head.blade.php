@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <title>{!! config('config.application_name') ? : config('constants.default_title') !!}</title>
+    <title> FIA Sistema de Facturación</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -23,7 +23,7 @@
     {!! HTML::style('css/style-right.css') !!}
     @endif
 
-    {!! Html::style('vendor/font-awesome/css/font-awesome.min.css') !!}
+    {!! Html::style('//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css') !!}
     {!! Html::style('vendor/sortable/sortable-theme-bootstrap.css') !!}
     {!! Html::style('vendor/icheck/skins/flat/blue.css') !!}
     {!! Html::style('vendor/select/css/bootstrap-select.min.css') !!}

@@ -1,4 +1,4 @@
 
                 <footer>
-				&copy; <a href="{!! URL::to('/') !!}">{!! config('config.application_name') !!} {!! env('VERSION') !!}</a> {!! config('config.credit') !!}
+					Todos los derechos reservados &copy; FIA &copy; <a target="_blank" href="http://mitecnologiamexico.com">Mi Tecnología México</a> , 2017
 				</footer>
