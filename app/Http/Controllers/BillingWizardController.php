@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Company;
 use App\Profile;
 use Artisaninweb\SoapWrapper\SoapWrapper;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -20,8 +21,18 @@ class BillingWizardController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function index(){
-        //generando vista del asistente
+    public function index($company_alias){
+
+        //Geting company by alias
+        $company = Company::where('alias','=',$company_alias)->first();
+
+        if(!$company){
+            $data['title'] = '404';
+            $data['name'] = 'Page not found';
+            return response()->view('errors.404',$data,404);
+        }
+
+        //loading assistant view
         return \Illuminate\Support\Facades\View::make('billing_wizard/wizard');
     }
 

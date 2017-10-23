@@ -8,5 +8,5 @@
 			<p>{{trans('messages.page_not_found')}}</p>
 			<p>{{trans('messages.back_to')}} <a href="/home">{{trans('messages.home')}}</a></p>
 		</div>
-		@include('layouts.footer')
+
 	@stop
