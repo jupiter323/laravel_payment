@@ -34,7 +34,7 @@ class BillingWizardController extends BaseController
 
         //loading assistant view
         $data['company'] = $company;
-        return \Illuminate\Support\Facades\View::make('billing_wizard/wizard',$company);
+        return \Illuminate\Support\Facades\View::make('billing_wizard/wizard',$data);
     }
 
     public function getCustomerByTaxid($taxid){

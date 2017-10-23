@@ -150,6 +150,12 @@
                                     <br>
                                     <div class="well invoice-container">
                                         <div class="row">
+                                            <div class="col-xs-12">
+                                                <p><img src="../{{$company->logo}}"/></p>
+                                                <h3>{{$company->name}}</h3>
+                                                <p><i class="fa fa-envelope"></i> {{$company->email}}</p>
+                                                <p><a target="_blank" href="{{$company->website}}"><i class="fa fa-globe"></i> {{$company->website}}</a></p>
+                                            </div>
                                             <div class="col-xs-6">
                                                 <h3 class="">
                                                     <i class="fa fa-check"></i>
@@ -176,16 +182,16 @@
                                                     </div>
                                                     <div class="panel-body">
                                                         <ul>
-                                                            <li>
+                                                            <li id="receptorName">
                                                                 Acme S.A. de C.V.
                                                             </li>
-                                                            <li>
+                                                            <li id="receptorRFC">
                                                                 AAA010101AAA
                                                             </li>
-                                                            <li>Av. Siempre Viva No 1 </li>
-                                                            <li>Col. Centro, CP. 77777</li>
-                                                            <li>San Luis Potosí,S.L.P, México</li>
-                                                            <li>email@cliente.com</li>
+                                                            <li id="receptorAddr1">Av. Siempre Viva No 1 </li>
+                                                            <li id="receptorAddr2">Col. Centro, CP. 77777</li>
+                                                            <li id="receptorCity">San Luis Potosí,S.L.P, México</li>
+                                                            <li id="receptorEmail">email@cliente.com</li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -537,7 +543,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
-                    <p>Todos los derechos reservados  &copy; FIA &copy; <a target="_blank" href="http://mitecnologiamexico.com/"> Mi Tecnología México  </a> , 2017.</p>
+                    <p>Todos los derechos reservados  &copy; FIA &copy; {{$company->name}}  </a> , 2017.</p>
                 </div>
                 <div class="col-sm-6 leagles"> <a href="#" style="color:#0a75bd"> Política de Privacidad </a> <a href="#" style="color:#0a75bd"> Términos de uso </a> </div>
             </div>
@@ -635,6 +641,12 @@
                         .done(function( response ) {
                             response  = eval("(" + response + ')');
                             $("#hdnId").val(response.data.id);
+                            $("#receptorName").html(response.data.tax_reg_name);
+                            $("#receptorRFC").html(response.data.tax_id);
+                            $("#receptorEmail").html(response.data.work_email);
+                            $("#receptorAddr1").html(response.data.address_line_1);
+                            $("#receptorAddr2").html(response.data.address_line_2);
+                            $("#receptorCity").html(response.data.city);
                             Notify('Tus datos se actualizaron correctamente.', 'bottom-right', '5000', 'blue', 'fa-check', true);
                             ajaxquery2 = false;
                             $('#simplewizard').wizard('next');
