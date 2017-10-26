@@ -15,10 +15,12 @@
 
 
 <li class="no-sort <?php echo (in_array('home',$menu)) ? 'active' : ''; ?> <?php echo menuAttr($menus,'home'); ?>><a href="/home"><i class="fa fa-home icon"></i> <?php echo trans('messages.home'); ?></a></li>
-	
-	
 
-	
+
+
+	<?php if(Entrust::can('list-account')): ?>
+		<li class="no-sort <?php echo (in_array('account',$menu)) ? 'active' : ''; ?> <?php echo menuAttr($menus,'account'); ?>><a href="/cfdis"><i class="fa fa-file-text icon"></i> <?php echo trans('messages.cfdis'); ?></a></li>
+	<?php endif; ?>
 
 	<?php if(Entrust::can('list-account')): ?>
 		<li class="no-sort <?php echo (in_array('account',$menu)) ? 'active' : ''; ?> <?php echo menuAttr($menus,'account'); ?>><a href="/account"><i class="fa fa-briefcase icon"></i> <?php echo trans('messages.accountability'); ?></a></li>

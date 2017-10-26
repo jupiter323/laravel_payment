@@ -14,4 +14,3 @@ class Group extends Eloquent {
 	protected $table = 'companies_group';
 
 }
-

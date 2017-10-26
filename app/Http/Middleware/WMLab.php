@@ -24,8 +24,8 @@ class WMLab
         foreach(config('constant.system_default') as $key => $value)
             config(['config.'.$key => config('constant.system_default.'.$key)]);
 
-        if(!checkDBConnection() && !$request->is('install') && !$request->is('update'))
-            return redirect('/install');
+        /*if(!checkDBConnection() && !$request->is('install') && !$request->is('update'))
+            return redirect('/install');*/
 
         if($request->is('install') || $request->is('update'))
             return $next($request);

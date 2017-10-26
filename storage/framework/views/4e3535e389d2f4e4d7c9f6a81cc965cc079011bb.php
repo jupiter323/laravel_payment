@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <title><?php echo config('config.application_name') ? : config('constants.default_title'); ?></title>
+    <title> FIA Sistema de Facturación</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
 
     <?php endif; ?>
 
-    <?php echo Html::style('vendor/font-awesome/css/font-awesome.min.css'); ?>
+    <?php echo Html::style('//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'); ?>
 
     <?php echo Html::style('vendor/sortable/sortable-theme-bootstrap.css'); ?>
 

@@ -207,7 +207,6 @@ Class AccController extends Controller{
 	}
 
 	public function store(AccRequest $request){
-
     	if(!is_connected())
             return response()->json(['message' => trans('messages.check_internet_connection'), 'status' => 'error']);
         
@@ -215,19 +214,21 @@ Class AccController extends Controller{
 		$envato_username = $request->input('envato_username');
 		$registered_email = $request->input('email');
 		$mysql_database = $request->input('mysql_database');
-		$data = installPurchase($purchase_code,$envato_username,$registered_email);
+		//$data = installPurchase($purchase_code,$envato_username,$registered_email);
 
+		/*
 		if($data['status'] != 'success')
             return response()->json(['message' => $data['message'], 'status' => 'error']);
 		
         if(!preg_match('/^[a-zA-Z0-9_\.\-]*$/',$request->input('username')))
             return response()->json(['message' => trans('messages.username_rules'), 'status' => 'error']);
 
+        */
+
 		$link = @mysqli_connect($request->input('hostname'), $request->input('mysql_username'), $request->input('mysql_password'));
 		
 		if (!$link)
             return response()->json(['message' => trans('messages.connection_not_established'), 'status' => 'error']);
-
 		mysqli_select_db($link,$request->input('mysql_database'));
 		$count_table_query = mysqli_query($link,"show tables");
 		$count_table = mysqli_num_rows($count_table_query);
@@ -252,6 +253,7 @@ Class AccController extends Controller{
 			}	
 		}
 		
+		
 		$username = $request->input('username');
 		$password = bcrypt($request->input('password'));
 		$email = $request->input('email');
@@ -269,6 +271,8 @@ Class AccController extends Controller{
 		mysqli_query($link, "insert into users(email,username,password,is_hidden,status) values('$email','$username','$password','1','active') ");
 		mysqli_query($link, "insert into profiles(user_id,first_name,last_name,designation_id) values('1','$first_name','$last_name','1') ");	
 		mysqli_query($link, "insert into role_user(user_id,role_id) values('1','1') ");
+
+		
 
 		envu([
 			'DB_HOST' => $request->input('hostname'),

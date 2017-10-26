@@ -38,7 +38,9 @@ Route::group(['middleware' => ['guest']], function () {
 
 	Route::get('/verify-purchase', 'AccController@verifyPurchase');
 	Route::post('/verify-purchase', 'AccController@postVerifyPurchase');
-	Route::resource('/install', 'AccController',['only' => ['index', 'store']]);
+	//Route::resource('/install', 'AccController',['only' => ['index', 'store']]);
+	Route::get('/install', 'AccController@index');
+	Route::post('/install', 'AccController@store')->name('install.store');
 	Route::get('/update','AccController@updateApp');
 	Route::post('/update',array('as' => 'update-app','uses' => 'AccController@postUpdateApp'));
 });
@@ -425,7 +427,7 @@ Route::group(['middleware' => ['auth','web','account','lock_screen']], function 
 
 	// cfdi routes
     //Route::model('account','\App\Account');
-    Route::resource('/cfdi', 'CfdiController');
+    //Route::resource('/cfdi', 'CfdiController');
 
 //---
 });

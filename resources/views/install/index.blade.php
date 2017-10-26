@@ -7,7 +7,7 @@
 			<div class="login-wrap">
 				<div class="box-info full">
 				
-					{!! Form::open(['route' => 'install.store','class' => 'install-form','id' => 'myWizard'])!!}
+					{!! Form::open(['route' => 'install.store','class' => 'install-form','id' => 'myWizard', 'method' => 'post'])!!}
 					<section class="step" data-step-title="Installation Guide">
 							<div class="row">
 								<div class="col-sm-12">
