@@ -58,7 +58,10 @@ $companys=\App\Company::where('id',$company_id)->get();
                                 @endif
                                 @if(config('config.multilingual') && Entrust::can('change-localization'))
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-language fa-lg icon" data-toggle="tooltip" title="{!! trans('messages.localization') !!}" data-placement="bottom"></i> </a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <!-- <i class="fa fa-language fa-lg icon" data-toggle="tooltip" title="{!! trans('messages.localization') !!}" data-placement="bottom"></i> --> 
+                                        <i class="  glyphicon glyphicon-text-color" data-toggle="tooltip" title="{!! trans('messages.localization') !!}" data-placement="bottom"></i> Lang
+                                    </a>
                                     <ul class="dropdown-menu animated half flipInX">
                                         <li class="active"><a href="#" style="color:white;cursor:default;">{!! config('localization.'.session('localization').'.localization').' ('.session('localization').')' !!}</a></li>
                                         @foreach(config('localization') as $key => $localization)

@@ -1,4 +1,4 @@
 <?php
 return array(
-    "default_localization" => 'es'
+    "default_localization" => 'en'
 );

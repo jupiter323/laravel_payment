@@ -139,11 +139,16 @@ class WMLab
 
         $default_timezone = config('config.timezone_id') ? config('timezone.'.config('config.timezone_id')) : 'Asia/Kolkata';
         date_default_timezone_set($default_timezone);
-
         $default_localization = (Session::has('localization')) ? session('localization') : ((config('config.default_localization')) ? : 'es' );
-
-        session(['localization' => 'es']);
-        \App::setLocale('es');
+        if(session('localization') == 'es'){
+            \App::setLocale('es');
+        }else if(session('localization') == 'en')
+        {
+            \App::setLocale('en');
+        }else{
+            session(['localization' => 'es']);
+            \App::setLocale('es');
+        }
 
         $datatable_localization = (config('localization.'.$default_localization.'.datatable')) ? : 'Spanish';
         $calendar_localization = (config('localization.'.$default_localization.'.calendar')) ? : 'es';
